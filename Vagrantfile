@@ -3,21 +3,23 @@
 
 # bootstrap ansible roles from this repository
 roles_git = "https://github.com/fdemmer/ansible_roles.git"
-roles_path = "/home/vagrant/.ansible/roles"
+roles_path = "/etc/ansible/roles"
 
 # ansible_local provisioner required
 Vagrant.require_version ">= 1.8.0"
 
 
-
 $bootstrap_script = <<SCRIPT
-apt-get update && apt-get -y install git
-if [ ! -d \"#{roles_path}\" ] ; then
-    sudo -u vagrant git clone #{roles_git} #{roles_path}
+if ! hash git 2>/dev/null; then
+    apt-get update && apt-get -y install git
+fi
+if [ ! -d \"#{roles_path}\" ]; then
+    git clone #{roles_git} #{roles_path}
 else
     cd #{roles_path} && git pull
 fi
 SCRIPT
+
 
 Vagrant.configure(2) do |config|
 
