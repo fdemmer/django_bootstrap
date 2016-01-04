@@ -1,0 +1,5 @@
+An attempt to automate bootstrapping a new Django project in a vagrant box 
+with minimal impact and requirements on the host.
+
+Builds on ansible roles defined in https://github.com/fdemmer/ansible_roles
+
