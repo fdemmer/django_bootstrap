@@ -1,5 +1,23 @@
+About
+-----
+
 An attempt to automate bootstrapping a new Django project in a vagrant box 
 with minimal impact and requirements on the host.
 
 Builds on ansible roles defined in https://github.com/fdemmer/ansible_roles
+
+
+Requirements
+------------
+
+Vagrant >= 1.8
+
+
+Quickstart
+----------
+
+- Clone the repository (and delete .git afterwards) or download a zip release.
+- Set a project name as the `service_name` in `extra_vars.yml` or just leave 
+  "foo" in there if you just quickly need a django box to try something.
+- Run `vagrant up`
 
