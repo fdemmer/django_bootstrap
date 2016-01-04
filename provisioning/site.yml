@@ -1,6 +1,6 @@
 ---
 - name: provision service in vagrant box
-  hosts: vagrant
+  hosts: localhost
   sudo: yes
 
   vars:

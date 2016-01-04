@@ -36,7 +36,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "ansible", type: "ansible_local" do |ansible|
     ansible.playbook = "provisioning/site.yml"
-    ansible.inventory_path = "provisioning/inventory"
   end
 
 end
