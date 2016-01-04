@@ -1,0 +1,12 @@
+---
+- name: provision service in vagrant box
+  hosts: vagrant
+  sudo: yes
+
+  vars:
+    - service_name: "changeme"
+
+  roles:
+    - common
+    - django
+
