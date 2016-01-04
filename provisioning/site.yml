@@ -3,9 +3,6 @@
   hosts: localhost
   sudo: yes
 
-  vars:
-    - service_name: "changeme"
-
   roles:
     - common
     - django
