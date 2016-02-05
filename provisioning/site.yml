@@ -3,6 +3,9 @@
   hosts: localhost
   sudo: yes
 
+  vars:
+    - use_python3: True
+
   roles:
     - common
     - bootstrap_python
