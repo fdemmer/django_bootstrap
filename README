@@ -20,4 +20,8 @@ Quickstart
 - Set a project name as the `service_name` in `extra_vars.yml` or just leave 
   "foo" in there if you just quickly need a django box to try something.
 - Run `vagrant up`
+- Get coffee
+- Enter your vagrant box with `vagrant ssh`
+- Run `./manage.py createsuperuser`
+- Check everything is up and running at http://10.10.10.10/admin
 
