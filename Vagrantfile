@@ -10,9 +10,14 @@ Vagrant.require_version ">= 1.8.0"
 
 
 $bootstrap_script = <<SCRIPT
+# install ansible 1.9
+rm /etc/apt/sources.list.d/ansible-ansible-trusty.list 2>/dev/null
+yes|add-apt-repository ppa:ansible/ansible-1.9 2>/dev/null
+# install git
 if ! hash git 2>/dev/null; then
     apt-get update && apt-get -y install git
 fi
+# install our custom ansible roles
 if [ ! -d \"#{roles_path}\" ]; then
     git clone #{roles_git} #{roles_path}
 else
