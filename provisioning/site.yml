@@ -1,5 +1,5 @@
 ---
-- name: provision service in vagrant box
+- name: provision django in a vagrant box
   hosts: localhost
   sudo: yes
 
