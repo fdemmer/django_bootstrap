@@ -3,7 +3,7 @@
 
 # bootstrap ansible roles from this repository
 roles_git = "https://github.com/fdemmer/ansible_roles.git"
-roles_branch = "master"
+roles_branch = "wagtail"
 roles_path = "/etc/ansible/roles"
 
 # ansible_local provisioner required
