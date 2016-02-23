@@ -16,9 +16,9 @@ Vagrant >= 1.8
 Quickstart
 ----------
 
-- Clone the repository and delete .git
+- Clone the django_bootstrap repository
 - Set a project name as the `service_name` in `extra_vars.yml`
-- Run `vagrant up`
+- Execute `run.sh` (initializes new git repo and start vagrant provisioning)
 - Get coffee
 - Enter your vagrant box with `vagrant ssh`
 - Run `./manage.py createsuperuser`
