@@ -3,6 +3,7 @@
 
 # bootstrap ansible roles from this repository
 roles_git = "https://github.com/fdemmer/ansible_roles.git"
+roles_branch = "master"
 roles_path = "/etc/ansible/roles"
 
 # ansible_local provisioner required
@@ -22,7 +23,7 @@ if ! hash git 2>/dev/null; then
 fi
 # install our custom ansible roles
 if [ ! -d \"#{roles_path}\" ]; then
-    git clone #{roles_git} #{roles_path}
+    git clone -b #{roles_branch} #{roles_git} #{roles_path}
 else
     cd #{roles_path} && git pull
 fi
