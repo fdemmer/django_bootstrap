@@ -65,12 +65,12 @@ Vagrant.configure(2) do |config|
   config.vm.define "default"
   config.vm.provision "ansible", type: "ansible_local" do |ansible|
     ansible.playbook = "provisioning/site.yml"
-    ansible.extra_vars = "extra_vars.yml"
     ansible.raw_arguments = Shellwords.shellsplit(ENV['ANSIBLE_ARGS']) if ENV['ANSIBLE_ARGS']
     ansible.verbose = 'vvv'
   end
 
   config.vm.post_up_message = \
     "The private network IP address is: #{private_network_ip}\n" \
-    "To customize, add a host called '#{config.vm.hostname}' to your /etc/hosts!"
+    "To customize, add a host called '#{config.vm.hostname}' with the desired\n" \
+    "address to your /etc/hosts and run 'vagrant reload'!"
 end
