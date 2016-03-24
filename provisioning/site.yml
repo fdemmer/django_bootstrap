@@ -1,9 +1,13 @@
 ---
-- name: provision django in a vagrant box
-  hosts: localhost
-  sudo: yes
+- name: provision service
+  hosts: default
+  become: yes
+  become_user: 'root'
 
   vars:
+    - service_name: "django"
+
+    - use_nginx: True
     - use_python3: True
 
   roles:
