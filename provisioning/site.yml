@@ -5,9 +5,6 @@
   become_user: 'root'
 
   vars:
-    - service_name: 'django'
-
-    - use_nginx: True
     - use_python3: True
 
   roles:

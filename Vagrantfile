@@ -1,11 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Please use only numbers and letters.
+service_name = "myproject"
 
 # bootstrap ansible roles from this repository
 roles_git = "https://github.com/fdemmer/ansible_roles.git"
 roles_branch = "master"
 roles_path = "/etc/ansible/roles"
+
 
 # ansible_local provisioner required
 Vagrant.require_version ">= 1.8.0"
@@ -16,6 +19,7 @@ def get_ipaddr(hostname, default)
   rescue SocketError
     return default
 end
+
 
 $bootstrap_script = <<SCRIPT
 # install ansible 1.9
@@ -38,7 +42,7 @@ SCRIPT
 
 
 Vagrant.configure(2) do |config|
-  config.vm.hostname = "django.box"
+  config.vm.hostname = "#{service_name}.box"
   config.vm.box = "ubuntu/trusty64"
 
   config.vm.box_check_update = true
@@ -65,12 +69,18 @@ Vagrant.configure(2) do |config|
   config.vm.define "default"
   config.vm.provision "ansible", type: "ansible_local" do |ansible|
     ansible.playbook = "provisioning/site.yml"
+    ansible.extra_vars = {
+      "service_name": service_name,
+      "service_user": "vagrant",
+      "service_group": "vagrant",
+    }
     ansible.raw_arguments = Shellwords.shellsplit(ENV['ANSIBLE_ARGS']) if ENV['ANSIBLE_ARGS']
-    ansible.verbose = 'vvv'
+    #ansible.verbose = 'vvv'
   end
 
   config.vm.post_up_message = \
-    "The private network IP address is: #{private_network_ip}\n" \
-    "To customize, add a host called '#{config.vm.hostname}' with the desired\n" \
-    "address to your /etc/hosts and run 'vagrant reload'!"
+    "The private network IP address is: #{private_network_ip}\n\n" \
+    "To customize, set the host called '#{config.vm.hostname}'\n" \
+    "to the desired IP address in your /etc/hosts and run \n" \
+    "'vagrant reload'!\n"
 end
