@@ -1,7 +1,7 @@
 About
 -----
 
-An attempt to automate bootstrapping a new Django project in a vagrant box 
+Automate bootstrapping a new Django project in a vagrant box
 with minimal impact and requirements on the host.
 
 Builds on ansible roles defined in https://github.com/fdemmer/ansible_roles
@@ -17,9 +17,38 @@ Quickstart
 ----------
 
 - Clone the django_bootstrap repository
-- Set a project name as the `service_name` in `extra_vars.yml`
-- Execute `run.sh` (initializes new git repo and start vagrant provisioning)
-- Get coffee
+- Execute `run.sh` and choose a name for the project
+- Get coffee... this will take a few minutes...
 - Enter your vagrant box with `vagrant ssh`
 - Run `./manage.py createsuperuser`
 - Check everything is up and running at http://10.10.10.10/admin
+
+
+What does the run.sh script do?
+-------------------------------
+
+- Asks for a service name and sets it in the Vagrantfile.
+
+  This will be used by the provisioning in a number of places. Most
+  prominently it will be the name of the Django project and the
+  hostname of the Vagrant box.
+  Hence the numbers and letters limitation.
+
+- Removes the .git directory and initializes a new repository.
+
+  Going forward with the project you will not want to use the origin
+  of django_bootstrap, but your own repository. A new git repository
+  is initialized and the Vagrantfile and provisioning directory is
+  committed.
+
+- Start up a vagrant box and run provisioning.
+
+  Vagrant runs the provisioning, which includes setting up the Django
+  project.
+
+- Self destruct.
+
+  The run.sh script removes itself in the end. From now on simply use
+  Vagrant to bring up the box or run provisioning again.
+
+  Feel free to customize the Vagrantfile or site.yml now.
