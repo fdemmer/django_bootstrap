@@ -16,6 +16,7 @@ rm -rf ./.git
 
 # init new git
 git init
+git add Vagrantfile provisioning/*
 git commit -am "Initial commit"
 
 # run vagrant
