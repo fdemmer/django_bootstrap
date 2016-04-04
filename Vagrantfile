@@ -70,9 +70,9 @@ Vagrant.configure(2) do |config|
   config.vm.provision "ansible", type: "ansible_local" do |ansible|
     ansible.playbook = "provisioning/site.yml"
     ansible.extra_vars = {
-      "service_name": service_name,
-      "service_user": "vagrant",
-      "service_group": "vagrant",
+      service_name: service_name,
+      service_user: "vagrant",
+      service_group: "vagrant",
     }
     ansible.raw_arguments = Shellwords.shellsplit(ENV['ANSIBLE_ARGS']) if ENV['ANSIBLE_ARGS']
     #ansible.verbose = 'vvv'
